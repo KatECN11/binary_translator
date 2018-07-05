@@ -53,6 +53,13 @@ class BinaryTranslatorTest < Minitest::Test
        actual = bt.string_prep("!@{$#%^&*()}")
 
        assert_equal "", actual
-     end 
+     end
+
+    def test_it_translates_from_binary_to_text
+      bt = BinaryTranslator.new
+      actual = bt.translate_to_text("001000000101001100001100001111000000010111001111010010001100000100")
+
+      assert_equal "hello world", actual
+    end 
 
 end
