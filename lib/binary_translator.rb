@@ -31,6 +31,7 @@ class BinaryTranslator
   end
 
   def translate(alpha)
+    alpha = alpha.downcase
     if alpha.length > 1
       alpha_array = alpha.chars
       translated_array = alpha_array.map do |alpha|
