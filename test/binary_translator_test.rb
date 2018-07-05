@@ -28,6 +28,11 @@ class BinaryTranslatorTest < Minitest::Test
     assert_equal "010100010101010010001001001110000111", actual
   end
 
-  
+  def test_it_can_translate_a_capital_letter
+    bt = BinaryTranslator.new
+    actual = bt.translate("A")
+
+    assert_equal "000001", actual
+  end 
 
 end
