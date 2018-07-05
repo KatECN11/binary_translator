@@ -30,9 +30,11 @@ class BinaryTranslatorTest < Minitest::Test
 
   def test_it_can_translate_a_capital_letter
     bt = BinaryTranslator.new
-    actual = bt.translate("A")
+    actual_1 = bt.translate("A")
+    actual_2 = bt.translate("TURING")
 
-    assert_equal "000001", actual
-  end 
+    assert_equal "000001", actual_1
+    assert_equal "010100010101010010001001001110000111", actual_2
+  end
 
 end
