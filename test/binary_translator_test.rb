@@ -37,4 +37,22 @@ class BinaryTranslatorTest < Minitest::Test
     assert_equal "010100010101010010001001001110000111", actual_2
   end
 
+  def test_it_can_translate_non_alpha_characters
+    bt = BinaryTranslator.new
+    actual_1 = bt.translate(" ")
+    actual_2 = bt.translate("!@{$#%^&*()}")
+    actual_3 = bt.translate("Hello World!")
+
+    assert_equal "000000", actual_1
+    assert_equal "", actual_2
+    assert_equal "001000000101001100001100001111000000010111001111010010001100000100", actual_3
+   end
+
+   def test_it_leaves_only_alpha_and_spaces
+       bt = BinaryTranslator.new
+       actual = bt.string_prep("!@{$#%^&*()}")
+
+       assert_equal "", actual
+     end 
+
 end
