@@ -56,10 +56,26 @@ class BinaryTranslatorTest < Minitest::Test
      end
 
     def test_it_translates_from_binary_to_text
+    skip
       bt = BinaryTranslator.new
       actual = bt.translate_to_text("001000000101001100001100001111000000010111001111010010001100000100")
 
       assert_equal "hello world", actual
+    end
+
+    def test_it_splits_binary_into_array_of_six_digits
+      bt = BinaryTranslator.new
+      actual = bt.string_to_array("001000000101001100")
+      expected = ["001000", "000101", "001100"]
+
+      assert_equal expected, actual
+    end
+
+    def test_it_maps_binary_strings_to_alpha
+      bt = BinaryTranslator.new
+      actual = binary_array_to_keys(["001000", "000101", "001100"])
+
+      assert_equal ["h", "e", "l"], actual
     end 
 
 end

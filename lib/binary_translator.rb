@@ -44,5 +44,33 @@ class BinaryTranslator
     alpha = alpha.downcase.gsub("!@{$#%^&*()}", "")
   end
 
+  def translate_to_text(binary)
+    binary_array = string_to_array(binary)
+    binary_array_to_keys(binary_array)
+
+
+  end
+
+
+
+    # access hash from value to put the key into the array
+    # remember to account for the " " which isn't in original hash
+    # join the array!
+  end
+
+  def string_to_array(binary)
+    binary_array = []
+    (binary.length / 6).times do |i|
+      binary_array << binary[(i * 6), 6]
+    end
+    binary_array
+  end
+
+  def binary_array_to_keys(array)
+    array.map do |binary|
+      
+
+  end
+
 # class end
 end
