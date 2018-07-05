@@ -31,16 +31,17 @@ class BinaryTranslator
   end
 
   def translate(alpha)
-    alpha = alpha.downcase
-    if alpha.length > 1
-      alpha_array = alpha.chars
-      translated_array = alpha_array.map do |alpha|
-        @alpha_to_binary[alpha]
-      end
-        translated_array.join
-    else
-      @alpha_to_binary[alpha]
+    alpha = string_prep(alpha)
+    alpha_array = alpha.chars
+    translated_array = alpha_array.map do |alpha|
+          @alpha_to_binary[" "] = "000000"
+          @alpha_to_binary[alpha]
     end
+    translated_array.join
+  end
+
+  def string_prep(alpha)
+    alpha = alpha.downcase.gsub("!@{$#%^&*()}", "")
   end
 
 # class end
