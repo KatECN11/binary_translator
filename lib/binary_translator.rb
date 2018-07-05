@@ -29,4 +29,18 @@ class BinaryTranslator
       "z" => "011010"
     }
   end
+
+  def translate(alpha)
+    if alpha.length > 1
+      alpha_array = alpha.chars
+      translated_array = alpha_array.map do |alpha|
+        @alpha_to_binary[alpha]
+      end
+        translated_array.join
+    else
+      @alpha_to_binary[alpha]
+    end
+  end
+
+# class end
 end
