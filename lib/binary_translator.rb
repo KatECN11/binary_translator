@@ -47,16 +47,8 @@ class BinaryTranslator
   def translate_to_text(binary)
     binary_array = string_to_array(binary)
     binary_array_to_keys(binary_array)
-
-
   end
 
-
-
-    # access hash from value to put the key into the array
-    # remember to account for the " " which isn't in original hash
-    # join the array!
-  end
 
   def string_to_array(binary)
     binary_array = []
@@ -67,10 +59,13 @@ class BinaryTranslator
   end
 
   def binary_array_to_keys(array)
-    array.map do |binary|
-      
-
+    alpha_array = array.map do |binary|
+      inverted_array = @alpha_to_binary.invert
+      inverted_array["0000000"] = " "
+      inverted_array[binary]
+    end
+    require "pry"; binding.pry
+    alpha_array.join
   end
 
-# class end
 end

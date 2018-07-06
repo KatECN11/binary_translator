@@ -73,9 +73,9 @@ class BinaryTranslatorTest < Minitest::Test
 
     def test_it_maps_binary_strings_to_alpha
       bt = BinaryTranslator.new
-      actual = binary_array_to_keys(["001000", "000101", "001100"])
+      actual = bt.binary_array_to_keys(["001000", "000101", "001100"])
 
-      assert_equal ["h", "e", "l"], actual
-    end 
+      assert_equal "hel", actual
+    end
 
 end
