@@ -48,15 +48,17 @@ class BinaryTranslatorTest < Minitest::Test
     assert_equal "001000000101001100001100001111000000010111001111010010001100000100", actual_3
    end
 
-   def test_it_leaves_only_alpha_and_spaces
-       bt = BinaryTranslator.new
-       actual = bt.string_prep("!@{$#%^&*()}")
-
-       assert_equal "", actual
-     end
+# tests my helper method, but it's not needed since the hash will return a nil for any
+# character not in the keys, then the join will take care of the rest.
+   # def test_it_leaves_only_alpha_and_spaces
+   #   skip
+   #     bt = BinaryTranslator.new
+   #     actual = bt.string_prep("!@{$#%^&*()}")
+   #
+   #     assert_equal [], actual
+   #   end
 
     def test_it_translates_from_binary_to_text
-    skip
       bt = BinaryTranslator.new
       actual = bt.translate_to_text("001000000101001100001100001111000000010111001111010010001100000100")
 

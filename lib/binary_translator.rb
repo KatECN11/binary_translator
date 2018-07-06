@@ -1,6 +1,7 @@
 class BinaryTranslator
   def initialize
     @alpha_to_binary = {
+      " " => "000000",
       "a" => "000001",
       "b" => "000010",
       "c" => "000011",
@@ -32,16 +33,15 @@ class BinaryTranslator
 
   def translate(alpha)
     alpha = string_prep(alpha)
-    alpha_array = alpha.chars
-    translated_array = alpha_array.map do |alpha|
-          @alpha_to_binary[" "] = "000000"
+    translated_array = alpha.map do |alpha|
           @alpha_to_binary[alpha]
     end
     translated_array.join
   end
 
-  def string_prep(alpha)
-    alpha = alpha.downcase.gsub("!@{$#%^&*()}", "")
+  def string_prep(characters)
+    alpha_array = characters.downcase.chars
+    # .gsub("!@{$#%^&*()}", "")
   end
 
   def translate_to_text(binary)
@@ -59,12 +59,10 @@ class BinaryTranslator
   end
 
   def binary_array_to_keys(array)
-    alpha_array = array.map do |binary|
+      alpha_array = array.map do |binary|
       inverted_array = @alpha_to_binary.invert
-      inverted_array["0000000"] = " "
       inverted_array[binary]
     end
-    require "pry"; binding.pry
     alpha_array.join
   end
 
